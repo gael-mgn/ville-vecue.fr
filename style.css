@@ -1,0 +1,241 @@
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+ a {
+    color: inherit;
+    text-decoration: none;
+  }
+  p a {
+    text-decoration: underline;
+  }
+  :root {
+    --bg: #fdfdfb;
+    --text: #2a2a2a;
+    --accent: #324a3a;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Libre Franklin", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 70px;
+  }
+
+  header {
+    z-index: 1000;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 70px;
+    background: var(--bg);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+    justify-content: space-between;
+  }
+
+  .brand { font-weight: 600; text-decoration: none; color: var(--text); font-size:1.4rem;
+
+background-image: url('images/2.webp');
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+   }
+
+  nav { display: flex; gap: 1.2rem; }
+  nav a { color: inherit;
+    text-decoration: none;
+    color: var(--text);
+    font-size: .95rem;
+  }
+  nav a:hover { color: var(--accent); }
+
+  .container { width: min(900px, 92%); margin: auto; }
+
+  section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  h2 {
+    margin-bottom: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 1rem;
+    /*background: var(--accent);*/
+    padding: .6rem 1.1rem;
+    border-radius: var(--radius);
+    color: #fff;
+    border: solid #fff 2px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .95rem;
+  }
+  .button:hover { opacity:.9; }
+
+  .button2 {
+    display: inline-block;
+    margin-top: 1rem;
+    /*background: var(--accent);*/
+    padding: .4rem 1rem;
+    border-radius: var(--radius);
+    color: #2A2A2A;
+    border: solid #2A2A2A 2px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .85rem;
+  }
+  .button2:hover { opacity:.9; }
+
+  /* Articles */
+  /* ✅ Styles articles */
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
+    border: 1px solid #ddd;
+    position: relative; /* Nécessaire pour positionner la flèche */
+}
+
+.arrow-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.card:hover .arrow-icon {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h4 {
+    margin-bottom: 10px;
+}
+
+.date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+  input, textarea {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: var(--radius);
+    padding: .6rem;
+    font-size: 1rem;
+    background: #fff;
+  }
+  textarea { min-height: 110px; }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: .85rem;
+    opacity: .7;
+  }
+
+  /* Responsive */
+  @media (max-width: 650px) {
+    nav { display: none; }
+    .menu-btn {
+      display: block;
+      background: none;
+      font-size: 1.4rem;
+      border: none;
+    }
+  }
+  .menu-btn { display:none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      #home {
+background: linear-gradient(
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('images/3.webp') center/cover no-repeat;
+    
+ text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+  color: white;
+  }
+    #carto {
+background: linear-gradient(
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('images/4.webp') center/cover no-repeat;
+    
+ text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+  color: white;
+  }
+
+
+  #evenements {
+background: linear-gradient(
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('images/6.webp') center/cover no-repeat;
+  }
+
+  #evenements h2, #carto h2 {
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+  color: white;
+  }

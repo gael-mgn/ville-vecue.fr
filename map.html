@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Carte Mobilité Accessible</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #eef1f5;
+  color: #333;
+}
+
+section#mobilite {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.info-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffffffee;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  font-size: 15px;
+  max-width: 280px;
+  backdrop-filter: blur(6px);
+}
+
+.info-panel h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.trajet-valide {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.trajet-handicap {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.toggle-btn:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+}
+
+
+
+
+.obstacle-popup h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #b91c1c;
+}
+
+.obstacle-popup p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.obstacle-popup img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+
+.trajet-selector {
+  text-align: center;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  max-width: 300px;
+  backdrop-filter: blur(4px);
+}
+
+.trajet-selector label {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.trajet-selector select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #fff;
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: border-c
+
+
+
+  </style>
+</head>
+<body>
+
+
+<style>
+  .mobile {
+    display: none;
+  }
+  @media only screen and (max-width: 767px) {
+  .mobile {
+    display: flex;
+  }
+  .no-mobile {
+    display: none;
+  }
+}
+  
+</style>
+<div class="trajet-selector mobile">
+        <select id="trajetSelect" onchange="afficherTrajet(this.value)">
+          <option value="0">Trajet 1 : Paris Centre</option>
+          <option value="1">Trajet 2 : Paris Centre</option>
+        </select>
+      </div>
+
+  <section id="mobilite" >
+    <div id="map"></div>
+    <div class="info-panel no-mobile" id="infoPanel" style="z-index: 100;">
+      <div class="trajet-selector">
+        <label for="trajetSelect">Choisir un trajet :</label>
+        <select id="trajetSelect" onchange="afficherTrajet(this.value)">
+          <option value="0">Trajet 1 : Paris Centre</option>
+          <option value="1">Trajet 2 : Paris Centre</option>
+        </select>
+      </div>
+
+
+      <h3>Comparaison des trajets</h3>
+      <p><span class="trajet-valide">Trajet valide</span> : 1.2 km – 15 min</p>
+      <p><span class="trajet-handicap">Trajet accessible</span> : 1.6 km – 22 min</p>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+// Icône obstacle (panneau sens interdit)
+const obstacleIcon = L.divIcon({
+  className: 'custom-obstacle-icon',
+  html: `
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="red" />
+      <rect x="5" y="10.5" width="14" height="3" fill="white" />
+    </svg>
+  `,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12]
+});
+
+// Initialiser carte Leaflet
+const map = L.map('map').setView([48.8566, 2.3522], 14);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// Conteneurs Leaflet pour chaque élément
+let trajetValideLayer, trajetHandicapLayer;
+let startMarker, endMarker;
+let obstacleMarkers = [];
+
+// ==============================
+// 🔁 Liste des trajets disponibles
+// ==============================
+const trajets = [
+  {
+    nom: "Trajet 1 : Paris Centre",
+    depart: [48.857, 2.347],
+    arrivee: [48.853, 2.36],
+    valide: [
+      [48.857, 2.347],
+      [48.856, 2.351],
+      [48.853, 2.36]
+    ],
+    accessible: [
+      [48.857, 2.347],
+      [48.857, 2.349],
+      [48.855, 2.354],
+      [48.853, 2.36]
+    ],
+    obstacles: [
+      {
+        coords: [48.856, 2.351],
+        title: "Escalier sans ascenseur",
+        description: "Ce passage comprend un escalier sans alternative accessible.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Stairs.jpg/320px-Stairs.jpg"
+      },
+      {
+        coords: [48.855, 2.355],
+        title: "Trottoir non abaissé",
+        description: "Ce trottoir n'est pas accessible en fauteuil roulant.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Trottoir_pas_abaiss%C3%A9.jpg/320px-Trottoir_pas_abaiss%C3%A9.jpg"
+      }
+    ]
+  },
+  {
+    nom: "Trajet 1 : Paris Centre",
+    depart: [48.857, 2.347],
+    arrivee: [48.853, 2.36],
+    valide: [
+      [48.857, 2.347],
+      [48.856, 2.351],
+      [48.853, 2.36]
+    ],
+    accessible: [
+      [48.857, 2.347],
+      [48.857, 2.349],
+      [48.855, 2.354],
+      [48.853, 2.36]
+    ],
+    obstacles: [
+      {
+        coords: [48.856, 2.351],
+        title: "Escalier sans ascenseur",
+        description: "Ce passage comprend un escalier sans alternative accessible.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Stairs.jpg/320px-Stairs.jpg"
+      },
+      {
+        coords: [48.855, 2.355],
+        title: "Trottoir non abaissé",
+        description: "Ce trottoir n'est pas accessible en fauteuil roulant.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Trottoir_pas_abaiss%C3%A9.jpg/320px-Trottoir_pas_abaiss%C3%A9.jpg"
+      }
+    ]
+  },
+  // 👉 Tu peux ajouter ici d'autres trajets...
+];
+
+// ==============================
+// 🎯 Fonction pour afficher un trajet
+// ==============================
+function afficherTrajet(index) {
+  const trajet = trajets[index];
+
+  // Nettoyer ancienne couche
+  if (trajetValideLayer) map.removeLayer(trajetValideLayer);
+  if (trajetHandicapLayer) map.removeLayer(trajetHandicapLayer);
+  if (startMarker) map.removeLayer(startMarker);
+  if (endMarker) map.removeLayer(endMarker);
+  obstacleMarkers.forEach(marker => map.removeLayer(marker));
+  obstacleMarkers = [];
+
+  // Ajouter les marqueurs de départ/arrivée
+  startMarker = L.marker(trajet.depart).addTo(map).bindPopup("Départ");
+  endMarker = L.marker(trajet.arrivee).addTo(map).bindPopup("Arrivée");
+
+  // Trajet "valide"
+  trajetValideLayer = L.polyline(trajet.valide, {
+    color: '#1d4ed8',
+    weight: 5,
+    opacity: 0.8
+  }).addTo(map).bindPopup("Trajet pour personne valide");
+
+  // Trajet "accessible"
+  trajetHandicapLayer = L.polyline(trajet.accessible, {
+    color: '#059669',
+    weight: 5,
+    dashArray: '10,6',
+    opacity: 0.8
+  }).addTo(map).bindPopup("Trajet accessible fauteuil roulant");
+
+  // Afficher obstacles
+  trajet.obstacles.forEach(obstacle => {
+    const popupContent = `
+      <div class="obstacle-popup">
+        <h4>${obstacle.title}</h4>
+        <p>${obstacle.description}</p>
+        <img src="${obstacle.image}" alt="${obstacle.title}" />
+      </div>
+    `;
+    const marker = L.marker(obstacle.coords, { icon: obstacleIcon })
+      .addTo(map)
+      .bindPopup(popupContent);
+    obstacleMarkers.push(marker);
+  });
+
+  // Adapter la vue
+  const allCoords = [
+    ...trajet.valide,
+    ...trajet.accessible,
+    ...trajet.obstacles.map(o => o.coords)
+  ];
+  map.fitBounds(allCoords);
+}
+
+// Afficher le premier trajet au chargement
+afficherTrajet(0);
+
+
+
+  </script>
+</body>
+</html>

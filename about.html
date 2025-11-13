@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Association Ville Vécue — À propos</title>
+ <meta name="description" content="Ville vécue est une association née d’un constat simple : nous ne vivons pas tous et toutes la ville de la même manière.">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html">Ville Vécue</a>
+  <button class="menu-btn" onclick="toggleNav()">☰</button>
+  <nav id="nav">
+    <a href="#">À propos</a>
+    <a href="actions.html">Nos actions</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<script>
+function toggleNav() {
+  const nav = document.getElementById("nav");
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  nav.style.flexDirection = "column";
+  nav.style.background = "var(--bg)";
+  nav.style.position = "absolute";
+  nav.style.top = "70px";
+  nav.style.right = "0";
+  nav.style.padding = "1rem";
+  nav.style.borderLeft = "1px solid rgba(0,0,0,0.08)";
+  nav.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+}
+</script>
+
+<main>
+  <section id="home">
+    <div class="container">
+    <h2>À propos de l'association</h2>
+  </div>
+  </section>
+
+  <section id="apropos">
+    <div class="container">
+    <h2>Notre mission</h2>
+    <p>Ville vécue est une association née d’un constat simple : nous ne vivons pas tous et toutes la ville de la même manière. Selon notre âge, notre genre, notre mobilité ou nos perceptions sensorielles, l’espace public peut être tour à tour accueillant, neutre ou excluant. Notre mission : sensibiliser à la diversité des expériences urbaines et agir pour une ville réellement inclusive.</p>
+    <p>L'association rassemble alors des étudiant·e·s et professionnel·le·s de profils variés (urbanisme, génie civil, sciences humaines, kinésithérapie…) autour d’une conviction simple : <strong>la ville doit être pensée pour la pluralité des corps et des usages</strong>. Nous avons à cœur d'organiser des ateliers directement sur le terrain pour sensibiliser les futur·e·s acteur·rice·s de la ville et produire des outils concrets : cartographies, rapports et recommandations, utilisables par quiconque (collectivités et bureaux d’études oar exemple). Nous nous intéressons à toutes les formes d’inclusion/exclusion dans l'espace public : genre, âge, mobilité, déficiences sensorielles, et usages sociaux des espaces.</p>
+    <br>
+
+    <h2>Notre vision</h2>
+    <p>La ville n’est pas seulement un ensemble d’espaces à aménager : c’est un lieu d’expériences, d’émotions et de pratiques multiples. Nous voulons donner à voir ces mille manières d’habiter la ville, de la traverser, de s’y sentir à sa place, ou non. En croisant les regards d’étudiant·e·s en génie urbain, en sciences humaines, en santé et d’acteurs du terrain, nous cherchons à penser la ville autrement : à partir du <strong>vécu</strong>.</p>
+
+    <br>
+
+    <h2>Une action phare : <em>En Sortant de l'École</em></h2>
+    <p>Notre premier grand projet, <em>En sortant de l’école</em>, propose aux étudiant·e·s en urbanisme, génie civil ou architecture de parcourir leur trajet quotidien en fauteuil roulant.<br>L’objectif : faire ressentir concrètement les obstacles que rencontrent les personnes à mobilité réduite, au-delà des seules normes d’accessibilité.<br>
+Ces trajets sont ensuite documentés, comparés et cartographiés pour créer un outil de sensibilisation et d’analyse de la mobilité inclusive.</p>
+
+<p><a class="button2" href="actions.html">En savoir plus</a></p>
+<br>
+
+<h2>Et demain ?</h2>
+<p>
+Nous souhaitons étendre nos ateliers à d’autres formes d’exclusion urbaine : genre, âge, santé, usage des espaces publics…
+Notre ambition : que chaque personne, quel que soit son vécu, puisse trouver sa place dans la ville et y circuler librement.</p>
+<br>
+<h2>Membres du CA</h2>
+<style>
+.profil {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.profil img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.info h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+.info p {
+  margin: 4px 0;
+}
+</style>
+
+<div class="profil">
+  <img src="images/gael-maignan.png" alt="Photo Gaël Maignan">
+  <div class="info">
+    <h3>Gaël Maignan</h3>
+    <p><strong>Président</strong></p>
+    <p>Étudiant en génie urbain à l'École des Ingénieurs de la Ville de Paris</p>
+    <a href="mailto:contact@gael-maignan.fr">contact@gael-maignan.fr</a>
+  </div>
+</div>
+<div class="profil">
+  <img src="images/caroline-buquet.jpeg" alt="Photo Caroline Buquet">
+  <div class="info">
+    <h3>Caroline Buquet</h3>
+    <p><strong>Vice-Présidente</strong></p>
+    <p>Étudiante en génie urbain à l'École des Ingénieurs de la Ville de Paris</p>
+    <a href="mailto:caroline.buquet@eivp-paris.fr">caroline.buquet@eivp-paris.fr</a>
+  </div>
+</div>
+<div class="profil">
+  <img src="images/user.png" alt="">
+  <div class="info">
+    <h3>Melvia Petit</h3>
+    <p><strong>Trésorière</strong></p>
+    <p>Étudiante en génie urbain à l'École des Ingénieurs de la Ville de Paris</p>
+    <a href="mailto:melvia.petit@eivp-paris.fr">melvia.petit@eivp-paris.fr</a>
+  </div>
+</div>
+
+
+
+</div>
+</section>
+
+  <section id="contact">
+    <div class="container">
+    <h2>Contact</h2>
+    <p>L’équipe de Ville vécue se tient à votre écoute pour toute demande d’information, de partenariat ou de participation à nos ateliers.<br>
+        N’hésitez pas à nous écrire à <a href="mailto:contact@gael-maignan.fr">contact@gael-maignan.fr</a>
+, nous vous répondrons avec plaisir dans les plus brefs délais.</p>
+  </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> — Ville Vécue
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

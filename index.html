@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Association Ville Vécue — Accueil</title>
+ <meta name="description" content="Ville Vécue est une association citoyenne qui promeut la diversité et l’inclusion dans l’espace public.">
+<link rel="icon" href="logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#">Ville Vécue</a>
+  <button class="menu-btn" onclick="toggleNav()">☰</button>
+  <nav id="nav">
+    <a href="about.html">À propos</a>
+    <a href="actions.html">Nos actions</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<script>
+function toggleNav() {
+  const nav = document.getElementById("nav");
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  nav.style.flexDirection = "column";
+  nav.style.background = "var(--bg)";
+  nav.style.position = "absolute";
+  nav.style.top = "70px";
+  nav.style.right = "0";
+  nav.style.padding = "1rem";
+  nav.style.borderLeft = "1px solid rgba(0,0,0,0.08)";
+  nav.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+}
+</script>
+
+<main>
+  <section id="home">
+    <div class="container">
+    <h2>Une ville, mille vécus...</h2>
+    <p><em>Ville Vécue</em> est une association citoyenne qui promeut la diversité et l’inclusion dans l’espace public. Composée d’étudiant·e·s en urbanisme, sciences humaines, génie et santé, l’association mêle réflexion, témoignages et actions concrètes pour repenser la ville afin qu’elle soit praticable par toutes et tous.</p>
+    <a href="actions.html" class="button">Découvrir nos actions</a>
+  </div>
+  </section>
+
+  <section id="apropos">
+    <div class="container">
+    <h2>Notre mission</h2>
+    <p>Composée d’étudiant·e·s en urbanisme, sciences humaines, génie et santé, l’association mêle réflexion, témoignages et actions concrètes pour repenser la ville afin qu’elle soit praticable par toutes et tous. Nous nous intéressons à toutes les formes d’inclusion/exclusion : genre, âge, mobilité, déficiences sensorielles, et usages sociaux des espaces.</p>
+    <br>
+
+     <h2>Derniers articles</h2>
+        <div class="articles-container">
+            <a href="article.html" class="card">
+                <img src="images/belleville.webp" alt="Article 1">
+                <div class="card-content">
+                    <h4>Inclusivité et espace public</h4>
+                    <p>Description de l'article.</p>
+                    <span class="date">Publié le 10 Octobre 2025</span>
+                </div>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+
+             <a href="article.html" class="card">
+                <img src="images/2.webp" alt="Article 2">
+                <div class="card-content">
+                    <h4>Titre de l'article</h4>
+                    <p>Description de l'article.</p>
+                    <span class="date">Publié le 2 Octobre 2025</span>
+                </div>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+
+             <a href="article.html" class="card">
+                <img src="images/urbanivore.webp" alt="Article 3">
+                <div class="card-content">
+                    <h4>Végétalisation et handicap : Des enjeux contradictoires ?</h4>
+                    <p>Description de l'article</p>
+                    <span class="date">Publié le 20 Septembre 2025</span>
+                </div>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+     </div>
+  </section>
+
+
+  <section id="evenements">
+    <div class="container">
+    <h2>Nos actions</h2>
+    <article class="card">
+                <div class="card-content">
+                    <h3>« En sortant de l’école » — Sensibilisation</h3>
+                    <p>« En sortant de l’école » est un atelier de sensibilisation destiné aux étudiant·e·s en urbanisme, génie civil et aux futur·e·s ingénieur·e·s. Les participant·e·s réalisent le trajet domicile–école une première fois comme ils le font au quotidien, puis une seconde fois en fauteuil roulant. L’exercice permet alors à l'étudiant de visualiser les obstacles omniprésents dans l'espace public, car l'accessibilité n'est pas uniquement une question de réglementation. En parallère, cette action permet également de mesurer les différences de durée, d’identifier et de documenter les obstacles, et de produire une cartographie interactive des obstacles rencontrés.</p>
+                </div>
+                <a href="actions.html">
+                 <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></a>
+            </article>
+            <br>
+            <article class="card">
+                <div class="card-content">
+                    <h3>Réflexions sur la ville vécue</h3>
+                    <p>Au-delà de nos actions de terrain, nous partageons régulièrement des articles, interviews et tribunes autour de la place de chacun·e dans l’espace public. Nous y explorons les enjeux de genre, d’accessibilité, de mobilité.<br>
+Découvrez nos réflexions, témoignages et regards croisés et plongez au cœur des mille vécus qui composent la ville.</p>
+                </div>
+                <a href="actions.html#articles">
+                 <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></a>
+            </article>
+
+  </div>
+  </section>
+
+<!--
+    <section id="carto">
+    <div class="container">
+    <h2>Notre mission</h2>
+    <p>Depuis 2010, nous soutenons les initiatives locales, créons du lien et accompagnons
+       chaque personne vers un mieux-être collectif.</p>
+     </div>
+  </section>-->
+
+  <section id="contact">
+    <div class="container">
+    <h2>Contact</h2>
+    <p>L’équipe de Ville vécue se tient à votre écoute pour toute demande d’information, de partenariat ou de participation à nos ateliers.<br>
+        N’hésitez pas à nous écrire à <a href="mailto:contact@gael-maignan.fr">contact@gael-maignan.fr</a>
+, nous vous répondrons avec plaisir dans les plus brefs délais.</p>
+  </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> — Ville Vécue
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
