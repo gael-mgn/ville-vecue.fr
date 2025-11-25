@@ -1,0 +1,5 @@
+/images/*
+  Cache-Control: max-age=0, must-revalidate
+
+/*.js
+  Cache-Control: max-age=0, must-revalidate
