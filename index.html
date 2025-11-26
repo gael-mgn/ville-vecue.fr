@@ -115,7 +115,8 @@ function toggleNav() {
       <!-- Étudiants accompagnés -->
       <article class="stat-card" data-appear role="group" aria-labelledby="label-etudiants">
         <div class="img-wrap" aria-hidden="true">
-          <img src="images/icon1.webp" alt="Icône : étudiants">
+          <!--<img src="images/icon1.webp" alt="Icône : étudiants">-->
+          <div class="svgIcon" data-src="https://villevecue.fr/images/icon1.svg"></div>
         </div>
         <div class="stat-content">
           <div class="stat-number" data-target="0" aria-live="polite" aria-atomic="true">0</div>
@@ -127,7 +128,8 @@ function toggleNav() {
       <!-- Distance parcourue -->
       <article class="stat-card" data-appear role="group" aria-labelledby="label-distance">
         <div class="img-wrap" aria-hidden="true">
-          <img src="images/icon2.webp" alt="Icône : distance">
+          <!--<img src="images/icon2.webp" alt="Icône : distance">-->
+          <div class="svgIcon" data-src="https://villevecue.fr/images/icon2.svg"></div>
         </div>
         <div class="stat-content">
           <div class="stat-number" data-target="0" aria-live="polite" aria-atomic="true">0</div>
@@ -139,7 +141,8 @@ function toggleNav() {
       <!-- Obstacles identifiés -->
       <article class="stat-card" data-appear role="group" aria-labelledby="label-obstacles">
         <div class="img-wrap" aria-hidden="true">
-          <img src="images/icon3.webp" alt="Icône : obstacles">
+          <!--<img src="images/icon3.webp" alt="Icône : obstacles">-->
+          <div class="svgIcon" data-src="https://villevecue.fr/images/icon3.svg"></div>
         </div>
         <div class="stat-content">
           <div class="stat-number" data-target="0" aria-live="polite" aria-atomic="true">0</div>
@@ -150,7 +153,8 @@ function toggleNav() {
 
       <article class="stat-card" data-appear role="group" aria-labelledby="label-distance">
         <div class="img-wrap" aria-hidden="true">
-          <img src="images/icon4.webp" alt="Icône : distance">
+          <!--<img src="images/icon4.webp" alt="Icône : distance">-->
+          <div class="svgIcon" data-src="https://villevecue.fr/images/icon4.svg"></div>
         </div>
         <div class="stat-content">
           <div class="stat-number" data-target="0" aria-live="polite" aria-atomic="true">0</div>
@@ -161,7 +165,8 @@ function toggleNav() {
 
       <article class="stat-card" data-appear role="group" aria-labelledby="label-distance">
         <div class="img-wrap" aria-hidden="true">
-          <img src="images/icon5.webp" alt="Icône : distance">
+          <!--<img src="images/icon5.webp" alt="Icône : distance">-->
+          <div class="svgIcon" data-src="https://villevecue.fr/images/icon5.svg"></div>
         </div>
         <div class="stat-content">
           <div class="stat-number" data-target="0" aria-live="polite" aria-atomic="true">0</div>
@@ -217,7 +222,7 @@ function toggleNav() {
 
   /* CARD */
   .stat-card {
-    background: var(--bg-card);
+    background: var(--bg2);
     border-radius: 14px;
     padding: clamp(12px, 2vw, 20px);
     box-shadow: 0 10px 28px var(--shadow);
@@ -247,7 +252,7 @@ function toggleNav() {
     height: clamp(64px, 10vw, 90px);
     border-radius: 12px;
     overflow: hidden;
-    background: #f4f4f4;
+    background: var(--bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,12 +269,22 @@ function toggleNav() {
     transform: scale(1);
   }
 
+  .img-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;        /* supprime les espaces blancs autour du SVG */
+  object-fit: cover;     /* simule le comportement des images */
+  border-radius: inherit; /* hérite du border-radius du parent */
+}
+
   .img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
+
+
 
   /* CONTENT */
   .stat-content {
@@ -282,7 +297,7 @@ function toggleNav() {
   .stat-number {
     font-size: clamp(1.4rem, 3.2vw, 1.9rem);
     font-weight: 700;
-    color: #072a25;
+    color: var(--text-color);
     line-height: 1;
   }
 
@@ -399,161 +414,6 @@ function toggleNav() {
 
 
 
-<style>
-      #evenements2 {
-background: linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url('images/map.png') center/cover no-repeat;
-  }
-
-  #evenements2 h2 {
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-  color: white;
-  }
-
-</style>
-
-<!--
-  <section id="evenements2">
-    <div class="container">
-    <h2>À la Une</h2>
-
-
-<a href="ville-a-franchir.html" target="_blank" class="article-link">
-    <div class="article-card">
-        <img src="images/ville-a-franchir.png" alt="Image de l'article" class="article-image">
-
-        <div class="article-content">
-            <h3 class="article-title">Cartographie des entraves à la mobilité</h3>
-            <p class="article-description">
-                Découvrez l'ampleur de nos actions à l'aide de notre carte interactive ! <br>
-                Vous y retrouverez notamment tous les obstacles à la mobilité rencontrés lors de nos ateliers de sensibilisation.</p>
-            <div class="arrow-wrapper">
-                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-</a>
-
-<style>
-/* Supprime le style du lien */
-.article-link {
-    text-decoration: none;
-    color: inherit;
-    display: block; /* Pour que le lien englobe la card */
-}
-
-.article-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin: 20px auto;
-    position: relative;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-/* Effet au survol */
-.article-link:hover .article-card {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.arrow-wrapper {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
-
-.article-image {
-    width: 30%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.article-content {
-    flex: 1;
-}
-
-.article-title {
-    margin: 0 0 10px;
-    font-size: 1.4rem;
-}
-
-.article-description {
-    margin: 0;
-    color: #555;
-    line-height: 1.5;
-}
-
-/* --- Responsive mobile --- */
-@media (max-width: 768px) {
-    .article-card {
-        flex-direction: column;
-        padding: 15px;
-    }
-
-    .article-image {
-        width: 100%;
-    }
-}
-</style>
-
-
-  </div>
-  </section>
--->
-
-
-<!--
-  <section id="apropos">
-    <div class="container">
-    <h2>Derniers articles</h2>
-        <div class="articles-container">
-            <a href="article.html" class="card">
-                <img src="images/article.webp" alt="Article 1">
-                <div class="card-content">
-                    <h4>Vieillir en ville : rester autonome dans un espace qui ne l’est pas toujours</h4>
-                    <p>Vieillir en ville : rester autonome dans un espace qui ne l’est pas toujours</p>
-                    <span class="date">Publié le .. 2025</span>
-                </div>
-                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-
-             <a href="article.html" class="card">
-                <img src="images/article.webp" alt="Article 3">
-                <div class="card-content">
-                    <h4>Genre et espace public : la ville du jour n’est pas la ville de la nuit</h4>
-                    <p>Genre et espace public : la ville du jour n’est pas la ville de la nuit</p>
-                    <span class="date">Publié le .. 2025</span>
-                </div>
-                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-
-            <a href="about.html" class="card">
-                <img src="images/article.webp" alt="Article 2">
-                <div class="card-content">
-                    <h4>À propos de l'association Ville Vécue</h4>
-                    <p>Ville vécue est une association née d’un constat simple : nous ne vivons pas tous et toutes la ville de la même manière. [...]</p>
-                    <span class="date">Publié le 25 Novembre 2025</span>
-                </div>
-                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-        </div>
-        <br>
-     </div>
-  </section>-->
-
-
 
   <section id="evenements">
     <div class="container">
@@ -562,7 +422,8 @@ background: linear-gradient(
 
 <span class="appear"><a href="en-sortant-de-l-ecole.html" class="action-card">
   <div class="action-card-icon">
-    <img src="images/icon1.webp" alt="Icon">
+    <!--<img src="images/icon1.webp" alt="Icon">-->
+    <div class="svgIcon" data-src="https://villevecue.fr/images/icon1.svg"></div>
   </div>
   <div class="separator"></div>
   <div class="action-card-content">
@@ -575,7 +436,8 @@ background: linear-gradient(
 </a></span>
 <span class="appear"><a href="#ca-va-etre-tout-noir.html" class="action-card">
   <div class="action-card-icon">
-    <img src="images/icon5.webp" alt="Icon">
+    <!--<img src="images/icon5.webp" alt="Icon">-->
+    <div class="svgIcon" data-src="https://villevecue.fr/images/icon5.svg"></div>
   </div>
   <div class="separator"></div>
   <div class="action-card-content">
@@ -588,7 +450,8 @@ background: linear-gradient(
 </a></span>
 <span class="appear"><a href="#a-ton-grand-age.html" class="action-card">
   <div class="action-card-icon">
-    <img src="images/icon4.webp" alt="Icon">
+  <!--<img src="images/icon4.webp" alt="Icon">-->
+  <div class="svgIcon" data-src="https://villevecue.fr/images/icon4.svg"></div>
   </div>
   <div class="separator"></div>
   <div class="action-card-content">
@@ -609,7 +472,7 @@ background: linear-gradient(
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: var(--bg);
   margin: 15px auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: 0.2s ease-in-out;
@@ -634,6 +497,14 @@ background: linear-gradient(
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+/* 👉 Ajout : donner le même comportement aux SVG inline */
+.action-card-icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  fill: red;
 }
 .separator {
   display: none;

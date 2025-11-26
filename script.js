@@ -33,5 +33,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   elements.forEach(element => observer2.observe(element)); // Observer chaque élément "appear"
+
+
+
+
+
+
+
+ document.querySelectorAll('.svgIcon').forEach(container => {
+    const url = container.dataset.src;
+
+    fetch(url)
+      .then(res => res.text())
+      .then(svg => {
+        // Remplacer tous les fill et stroke par currentColor
+        svg = svg.replace(/fill="[^"]*"/g, 'fill="currentColor"');
+        svg = svg.replace(/stroke="[^"]*"/g, 'stroke="currentColor"');
+
+        container.innerHTML = svg;
+      });
+  });
 });
 

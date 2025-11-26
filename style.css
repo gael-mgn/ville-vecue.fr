@@ -1,3 +1,5 @@
+
+
 /* Appliquer un style par défaut aux éléments avec la classe 'appear' */
 .appear {
   opacity: 0;
@@ -30,8 +32,11 @@
     text-decoration: underline;
   }
   :root {
-    --bg: #fdfdfb;
-    --text: #2a2a2a;
+    /*--bg: #fdfdfb;*/
+    --bg: #FFEBD8;
+    --bg2: #FFF1E5;
+    /*--text: #2a2a2a;*/
+    --text: #000A47;
     --accent: #324a3a;
     --radius: 4px;
   }
@@ -51,7 +56,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 70px;
-    background: var(--bg);
+    background: var(--bg2);
     border-bottom: 1px solid rgba(0,0,0,0.08);
     display: flex;
     align-items: center;
@@ -123,8 +128,8 @@ nav a:hover {
   margin-top: 1rem;
   padding: .6rem 1.1rem;
   border-radius: var(--radius);
-  color: #fff;
-  border: solid #fff 2px;
+  color: var(--bg2);
+  border: solid var(--bg2) 2px;
   text-decoration: none;
   font-weight: 500;
   font-size: .95rem;
@@ -165,7 +170,7 @@ nav a:hover {
 }
 
 .card {
-    background: white;
+    background: var(--bg2);
     border-radius: 6px;
     overflow: hidden;
     transition: 0.2s ease-in-out;
@@ -273,7 +278,7 @@ background: linear-gradient(
     url('images/background.webp') center/cover no-repeat;
     
  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-  color: white;
+  color: var(--bg2);
   }
     #carto {
 background: linear-gradient(
@@ -283,7 +288,7 @@ background: linear-gradient(
     url('images/background.webp') center/cover no-repeat;
     
  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-  color: white;
+  color: var(--bg2);
   }
 
 
@@ -297,7 +302,7 @@ background: linear-gradient(
 
   #evenements h2, #carto h2 {
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-  color: white;
+  color: var(--bg2);
   }
 
 
@@ -368,3 +373,11 @@ background: linear-gradient(
 /* Ajouter une bordure et un peu de padding aux éléments de la sous-liste */
 .sublist li {
 }
+
+
+
+
+
+  #svgIcon svg {
+    color: var(--text-color);       /* Couleur générale */
+  }
