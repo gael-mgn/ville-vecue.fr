@@ -1,3 +1,13 @@
+  :root {
+    /*--bg: #fdfdfb;*/
+    --bg: #FFEBD8;
+    --bg2: #FFF1E5;
+    /*--text: #2a2a2a;*/
+    --text: #000A47;
+    --accent: #324a3a;
+    --radius: 4px;
+    --accent2: #FFD7B2;
+  }
 
 
 /* Appliquer un style par défaut aux éléments avec la classe 'appear' */
@@ -38,16 +48,6 @@
   }
   p a {
     text-decoration: underline;
-  }
-  :root {
-    /*--bg: #fdfdfb;*/
-    --bg: #FFEBD8;
-    --bg2: #FFF1E5;
-    /*--text: #2a2a2a;*/
-    --text: #000A47;
-    --accent: #324a3a;
-    --radius: 4px;
-    --accent2: #FFD7B2;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -255,6 +255,7 @@ nav a {
   text-decoration: none;
   color: var(--text);
   font-size: .95rem;
+  font-weight: bold;
 }
 
 /* Trait animé */
@@ -264,14 +265,13 @@ nav a::after {
   left: 0;
   bottom: -3px;
   width: 0%;
-  height: 2px;
-  background: grey;
+  height: 3px;
+  background: var(--text);
   transition: width 0.25s ease-out;
 }
 
 nav a:hover::after { width: 100%; }
 
-nav a:hover { color: var(--accent); }
 
 /* --- BURGER BUTTON --- */
 .burger {
